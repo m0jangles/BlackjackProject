@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /*
  * We will be simulating a deck of cards.
 
@@ -18,10 +17,10 @@ public class Deck {
 	private List<Card> cards;
 
 	public Deck() {
-		createDeck();
+//		createDeck();
 	}
 
-	public void createDeck() {
+	public List<Card> createDeck() {
 		cards = new ArrayList<>();
 		for (Suit s : Suit.values()) {
 			for (Rank r : Rank.values()) {
@@ -29,19 +28,22 @@ public class Deck {
 			}
 
 		}
-
+		
+		return cards;
 	}
 
 	public int checkDeckSize(Deck size) {
 		return cards.size();
 	}
 
-	public void dealCard() {
-		cards.remove(0);
+	public Card getCard() {
+		return cards.remove(0);
 	}
 
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
+	
+	//
 
 }
