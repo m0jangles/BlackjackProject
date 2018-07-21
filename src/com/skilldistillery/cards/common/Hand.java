@@ -6,28 +6,30 @@ import java.util.List;
 public abstract class Hand {
 	
 	private List<Card> cardsInPlay = new ArrayList<>();
+	
 
 	public Hand() {
 		super();
 	}
 
 	public int getHandValue() {
+		
 		return 0;
 
 	}
 
-	public void addCardValue(Card c) {
+	public Card addCardsToHand(Card c) {
+		
 		cardsInPlay.add(c);
-//		System.out.println("TEST          " + cardsInPlay.size());
-
+		return c;
 	}
 
 	public void clearHand() {
 
 	}
 
-	public List<Card> getCards(List<Card> list) {
-		return list;
+	public List<Card> getCards() {
+		return cardsInPlay;
 	
 	}
 
