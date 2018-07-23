@@ -11,5 +11,5 @@ to stay or hit depending on the value of the hand.
 #### Lessons Learned
 Logic flow was the hardest part because the game can go down various paths
 depending on both player and dealer's hand values.  Debugging wasn't hard, but
-rather time-consuming because I tried to keep from repeating code while still
-meeting the requirements of the game.
+rather time-consuming because I tried to keep from repeating code while still trying
+to meeting the requirements of the game.
