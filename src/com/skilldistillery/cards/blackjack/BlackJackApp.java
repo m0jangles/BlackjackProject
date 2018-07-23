@@ -93,6 +93,10 @@ public class BlackJackApp {
 				bja.EndQuestion();
 
 			}
+			if(playerHand.getHandValue() == 21) {
+				System.out.println("WINNER WINNER, CHICKEN DINNER");
+				System.out.println("You got BLACKJACK");
+			}
 
 			if (answer.equalsIgnoreCase("S")) {
 				if (playerHand.getHandValue() == 21) {
@@ -103,8 +107,7 @@ public class BlackJackApp {
 				} else if (playerHand.getHandValue() < 21 && ((playerHand.getHandValue() > dealerHand.getHandValue())))
 					;
 				{
-					System.out.println("You win. Dealer score: \t" + dealerHand.getHandValue() + "\tPlayer score: \t"
-							+ playerHand.getHandValue());
+					System.out.println("You win. " + "\tPlayer score: \t" + playerHand.getHandValue());
 				}
 				if (dealerHand.getHandValue() < 17) {
 				bja.Dealer();
