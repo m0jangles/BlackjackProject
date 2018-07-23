@@ -156,18 +156,25 @@ public class BlackJackApp {
 	}
 
 	public void Begin() {
-		System.out.println("Would you like to play Blackjack?\n");
-		Scanner sc = new Scanner(System.in);
-		String answer = sc.nextLine();
-		if (answer.equalsIgnoreCase("Y")) {
-			bja.run();
+	
+			System.out.println("Would you like to play Blackjack (Y) or (N)?\n");
+			Scanner sc = new Scanner(System.in);
+			String answer = sc.nextLine();
+			if (answer.equalsIgnoreCase("Y")) {
+				bja.run();
 
-		} else {
-			System.out.println("Ok, bye.");
-			System.exit(1);
+			} 
+			else if (answer.equalsIgnoreCase("N")){
+				System.out.println("Ok, bye.");
+				System.exit(1);
+			}
+			else {
+			System.out.println("(Y) or (N) ");
+			bja.Begin();
 		}
-
 	}
+
+	
 
 	public void EndQuestion() {
 
