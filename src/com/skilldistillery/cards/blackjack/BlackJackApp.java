@@ -92,6 +92,7 @@ public class BlackJackApp {
 			
 			if (answer.equalsIgnoreCase("S")) {
 				bja.stay();
+				
 			}
 			if (answer.equalsIgnoreCase("H")) {
 				System.out.println("New card is: \t" + playerHand.addCardsToHand(deck.getCard()));
@@ -107,6 +108,7 @@ public class BlackJackApp {
 			if (playerHand.getHandValue() == 21) {
 				System.out.println("WINNER WINNER, CHICKEN DINNER");
 				System.out.println("You got BLACKJACK");
+				bja.EndQuestion();
 			}
 		}
 	}
