@@ -79,22 +79,22 @@ public class BlackJackApp {
 	}
 
 	public void Hit() {
-		
-		//this method needs work because when the user chooses stay,
-		//the game should evaluate a winner based on what the current
-		//hand values are
-		//currently, sometimes the game hangs in limbo when the user chooses "S"
-		//ideally, whenever the user chooses "S", the game bja object should
-		//be able to call the stay() method to move on to the next part of the game
+
+		// this method needs work because when the user chooses stay,
+		// the game should evaluate a winner based on what the current
+		// hand values are
+		// currently, sometimes the game hangs in limbo when the user chooses "S"
+		// ideally, whenever the user chooses "S", the game bja object should
+		// be able to call the stay() method to move on to the next part of the game
 		Scanner sc = new Scanner(System.in);
 
 		while (playerHand.getHandValue() < 21) {
 			System.out.println("What would you like to do: HIT (H) or STAY (S)\t");
 			String answer = scanner.nextLine();
-			
+
 			if (answer.equalsIgnoreCase("S")) {
 				bja.stay();
-				
+
 			}
 			if (answer.equalsIgnoreCase("H")) {
 				System.out.println("New card is: \t" + playerHand.addCardsToHand(deck.getCard()));
@@ -127,7 +127,8 @@ public class BlackJackApp {
 			bja.EndQuestion();
 		}
 
-		else if (playerHand.getHandValue() < 21 && (playerHand.getHandValue() > dealerHand.getHandValue()) && dealerHand.getHandValue() < 17) {
+		else if (playerHand.getHandValue() < 21 && (playerHand.getHandValue() > dealerHand.getHandValue())
+				&& dealerHand.getHandValue() < 17) {
 
 			bja.Dealer();
 		}
@@ -143,12 +144,12 @@ public class BlackJackApp {
 		if (dealerHand.getHandValue() > 21) {
 			System.out.println("Dealer BUSTS with: \t" + dealerHand.getHandValue());
 			bja.EndQuestion();
+		}
 
-		} else if (playerHand.getHandValue() <= 21 && playerHand.getHandValue() > dealerHand.getHandValue()) {
+		else if (playerHand.getHandValue() <= 21 && playerHand.getHandValue() > dealerHand.getHandValue()) {
 			System.out.println("You win with score: " + playerHand.getHandValue());
 			System.out.println("Dealer loses with score: " + dealerHand.getHandValue());
-		}
-		{
+
 		}
 
 	}
@@ -167,25 +168,21 @@ public class BlackJackApp {
 	}
 
 	public void Begin() {
-	
-			System.out.println("Would you like to play Blackjack (Y) or (N)?\n");
-			Scanner sc = new Scanner(System.in);
-			String answer = sc.nextLine();
-			if (answer.equalsIgnoreCase("Y")) {
-				bja.run();
 
-			} 
-			else if (answer.equalsIgnoreCase("N")){
-				System.out.println("Ok, bye.");
-				System.exit(1);
-			}
-			else {
+		System.out.println("Would you like to play Blackjack (Y) or (N)?\n");
+		Scanner sc = new Scanner(System.in);
+		String answer = sc.nextLine();
+		if (answer.equalsIgnoreCase("Y")) {
+			bja.run();
+
+		} else if (answer.equalsIgnoreCase("N")) {
+			System.out.println("Ok, bye.");
+			System.exit(1);
+		} else {
 			System.out.println("(Y) or (N) ");
 			bja.Begin();
 		}
 	}
-
-	
 
 	public void EndQuestion() {
 
