@@ -84,6 +84,8 @@ public class BlackJackApp {
 		//the game should evaluate a winner based on what the current
 		//hand values are
 		//currently, sometimes the game hangs in limbo when the user chooses "S"
+		//ideally, whenever the user chooses "S", the game bja object should
+		//be able to call the stay() method to move on to the next part of the game
 		Scanner sc = new Scanner(System.in);
 
 		while (playerHand.getHandValue() < 21) {
