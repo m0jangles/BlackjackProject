@@ -25,6 +25,7 @@ public abstract class Hand {
 	}
 
 	public void clearHand() {
+		cardsInPlay.clear();
 
 	}
 

@@ -15,9 +15,9 @@ public class BlackJackApp {
 	Hand dealerHand = new BlackjackHand();
 	Hand playerHand = new BlackjackHand();
 	Deck deck = new Deck();
+	static BlackJackApp bja = new BlackJackApp();
 
 	Scanner scanner = new Scanner(System.in);
-	static BlackJackApp bja = new BlackJackApp();
 
 	public static void main(String[] args) {
 
@@ -53,6 +53,9 @@ public class BlackJackApp {
 		System.out.println("Dealer's current hand is a SECRET ");
 		dealerHand.getHandValue();
 		System.out.println();
+		if(playerHand.getHandValue() > 21) {
+			System.out.println("What a BUST, you went over 21 ");
+		}
 
 		if (playerHand.getHandValue() == 21) {
 			System.out.println("You got BLACKJACK");
@@ -95,6 +98,7 @@ public class BlackJackApp {
 				if (playerHand.getHandValue() == 21) {
 					System.out.println("You win");
 					bja.EndQuestion();
+					break;
 
 				} else if (playerHand.getHandValue() < 21 && ((playerHand.getHandValue() > dealerHand.getHandValue())))
 					;
@@ -102,7 +106,9 @@ public class BlackJackApp {
 					System.out.println("You win. Dealer score: \t" + dealerHand.getHandValue() + "\tPlayer score: \t"
 							+ playerHand.getHandValue());
 				}
+				if (dealerHand.getHandValue() < 17) {
 				bja.Dealer();
+				}
 			}
 		}
 	}
@@ -155,7 +161,9 @@ public class BlackJackApp {
 		Scanner sc = new Scanner(System.in);
 		String answer = sc.nextLine();
 		if (answer.equalsIgnoreCase("Y")) {
-			deck.newDeck();
+			playerHand.clearHand();
+			dealerHand.clearHand();
+			deck.clear();
 			bja.run();
 		} else if (answer.equalsIgnoreCase("N")) {
 			System.out.println("goodbye");
