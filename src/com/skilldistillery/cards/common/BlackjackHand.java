@@ -16,7 +16,7 @@ public class BlackjackHand extends Hand {
 		for(int i = 0; i < cardsInPlay.size(); i++) {
 			Card c = cardsInPlay.get(i);
 			value += c.getValue();
-			System.out.println(c);
+//			System.out.println(c);
 		}
 		
 		return value;
