@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class Deck {
 	private List<Card> cards;
 
@@ -20,7 +19,7 @@ public class Deck {
 			}
 
 		}
-		
+
 	}
 
 	public int checkDeckSize(Deck size) {
@@ -34,7 +33,20 @@ public class Deck {
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
-	
-	//
 
+	public void newDeck() {
+		cards = new ArrayList<>();
+		for (Suit s : Suit.values()) {
+			for (Rank r : Rank.values()) {
+				cards.add(new Card(s, r));
+			}
+			shuffle();
+
+		}
+
+	}
+
+	public void clear() {
+		cards.clear();
+	}
 }
