@@ -53,12 +53,14 @@ public class BlackJackApp {
 		System.out.println("Dealer's current hand is a SECRET ");
 		dealerHand.getHandValue();
 		System.out.println();
-		if(playerHand.getHandValue() > 21) {
+		if (playerHand.getHandValue() > 21) {
 			System.out.println("What a BUST, you went over 21 ");
 		}
 
 		if (playerHand.getHandValue() == 21) {
+			System.out.println("WINNER");
 			System.out.println("You got BLACKJACK");
+			System.out.println("WINNER");
 			bja.EndQuestion();
 
 		}
@@ -78,6 +80,8 @@ public class BlackJackApp {
 
 	public void Hit() {
 		Scanner sc = new Scanner(System.in);
+	
+		
 		while (playerHand.getHandValue() < 21) {
 			System.out.println("What would you like to do: HIT (H) or STAY (S)\t");
 			String answer = scanner.nextLine();
@@ -93,10 +97,11 @@ public class BlackJackApp {
 				bja.EndQuestion();
 
 			}
-			if(playerHand.getHandValue() == 21) {
+			if (playerHand.getHandValue() == 21) {
 				System.out.println("WINNER WINNER, CHICKEN DINNER");
 				System.out.println("You got BLACKJACK");
 			}
+			
 
 			if (answer.equalsIgnoreCase("S")) {
 				if (playerHand.getHandValue() == 21) {
@@ -104,14 +109,11 @@ public class BlackJackApp {
 					bja.EndQuestion();
 					break;
 
-				} else if (playerHand.getHandValue() < 21 && ((playerHand.getHandValue() > dealerHand.getHandValue())))
-					;
-				{
-					System.out.println("You win. " + "\tPlayer score: \t" + playerHand.getHandValue());
+				} else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
+
+					bja.Dealer();
 				}
-				if (dealerHand.getHandValue() < 17) {
-				bja.Dealer();
-				}
+
 			}
 		}
 	}
@@ -125,6 +127,10 @@ public class BlackJackApp {
 		if (dealerHand.getHandValue() > 21) {
 			System.out.println("Dealer BUSTS with: \t" + dealerHand.getHandValue());
 			bja.EndQuestion();
+
+		} else if (playerHand.getHandValue() <= 21 && playerHand.getHandValue() > dealerHand.getHandValue()) {
+			System.out.println("You win with score: " + playerHand.getHandValue());
+			System.out.println("Dealer loses with score: " + dealerHand.getHandValue());
 		}
 		{
 		}
