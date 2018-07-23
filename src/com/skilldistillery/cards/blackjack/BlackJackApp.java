@@ -120,9 +120,10 @@ public class BlackJackApp {
 			System.out.println("Your score is: " + playerHand.getHandValue());
 			System.out.println("Dealer score is: " + dealerHand.getHandValue());
 			System.out.println("You lose, better luck next time.");
+			bja.EndQuestion();
 		}
 
-		else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
+		else if (playerHand.getHandValue() < 21 && (playerHand.getHandValue() > dealerHand.getHandValue()) && dealerHand.getHandValue() < 17) {
 
 			bja.Dealer();
 		}
