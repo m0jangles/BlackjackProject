@@ -80,12 +80,13 @@ public class BlackJackApp {
 
 	public void Hit() {
 		Scanner sc = new Scanner(System.in);
-	
-		
+
 		while (playerHand.getHandValue() < 21) {
 			System.out.println("What would you like to do: HIT (H) or STAY (S)\t");
 			String answer = scanner.nextLine();
-
+			if (answer.equalsIgnoreCase("S")) {
+				bja.stay();
+			}
 			if (answer.equalsIgnoreCase("H")) {
 				System.out.println("New card is: \t" + playerHand.addCardsToHand(deck.getCard()));
 				System.out.println("Your current hand is: \t" + playerHand.getHandValue());
@@ -101,24 +102,28 @@ public class BlackJackApp {
 				System.out.println("WINNER WINNER, CHICKEN DINNER");
 				System.out.println("You got BLACKJACK");
 			}
-			
-
-			if (answer.equalsIgnoreCase("S")) {
-				if (playerHand.getHandValue() == 21) {
-					System.out.println("You win");
-					bja.EndQuestion();
-					break;
-
-				} else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
-
-					bja.Dealer();
-				}
-
-			}
 		}
 	}
 
-	private void Dealer() {
+	public void stay() {
+
+		if (playerHand.getHandValue() == 21) {
+			System.out.println("You win");
+			bja.EndQuestion();
+		} else if (playerHand.getHandValue() < dealerHand.getHandValue()) {
+			System.out.println("Your score is: " + playerHand.getHandValue());
+			System.out.println("Dealer socre is: " + dealerHand.getHandValue());
+			System.out.println("You lose, better luck next time.");
+		}
+
+		if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
+
+			bja.Dealer();
+		}
+
+	}
+
+	public void Dealer() {
 
 		while (dealerHand.getHandValue() < 17) {
 			dealerHand.addCardsToHand(deck.getCard());
