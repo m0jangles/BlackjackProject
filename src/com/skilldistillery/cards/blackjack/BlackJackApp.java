@@ -224,7 +224,7 @@ public class BlackJackApp {
 			deck.clear();
 			bja.run();
 		} else if (answer.equalsIgnoreCase("N")) {
-			System.out.println("goodbye");
+			System.out.println("Bye, Felicia");
 			System.exit(1);
 		}
 		else {
