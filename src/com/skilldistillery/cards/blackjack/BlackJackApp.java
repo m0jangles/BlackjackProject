@@ -127,7 +127,7 @@ public class BlackJackApp {
 			System.out.println("Dealer score is: " + dealerHand.getHandValue());
 			System.out.println("You lose, better luck next time.");
 			bja.EndQuestion();
-		} else if (playerHand.getHandValue() > dealerHand.getHandValue() && dealerHand.getHandValue() > 17
+		} else if (playerHand.getHandValue() > dealerHand.getHandValue() && dealerHand.getHandValue() >= 17
 				&& playerHand.getHandValue() < 21) {
 			bja.showCards();
 			System.out.println("Your score is: " + playerHand.getHandValue());
@@ -139,15 +139,14 @@ public class BlackJackApp {
 			bja.showCards();
 			System.out.println("You have the same score as the dealer, no one wins");
 			bja.EndQuestion();
-		} 
-		
-		else if(playerHand.getHandValue() < 21 && playerHand.getHandValue() < dealerHand.getHandValue()) {
+		}
+
+		else if (playerHand.getHandValue() < 21 && playerHand.getHandValue() < dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("You lose");
 			bja.EndQuestion();
-			
-		}
-		else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
+
+		} else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
 
 			bja.Dealer();
 		}
@@ -172,11 +171,15 @@ public class BlackJackApp {
 			System.out.println("You win with score: " + playerHand.getHandValue());
 			System.out.println("Dealer loses with score: " + dealerHand.getHandValue());
 			bja.EndQuestion();
-	
-		}
-		else if(playerHand.getHandValue() == dealerHand.getHandValue()) {
+		} else if (playerHand.getHandValue() < dealerHand.getHandValue()) {
+			bja.showCards();
+			System.out.println("You lose with score: " + playerHand.getHandValue());
+			bja.EndQuestion();
+
+		} else if (playerHand.getHandValue() == dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("Player and dealer have the same score, no winner");
+			bja.EndQuestion();
 		}
 
 	}
@@ -229,7 +232,7 @@ public class BlackJackApp {
 	public void formattingLines() {
 		System.out.println("-------------------------");
 	}
-	
+
 	public void showCards() {
 		System.out.println("Player cards: " + playerHand.getCards());
 		System.out.println("Dealer cards: " + dealerHand.getCards());
