@@ -79,13 +79,6 @@ public class BlackJackApp {
 	}
 
 	public void Hit() {
-
-		// this method needs work because when the user chooses stay,
-		// the game should evaluate a winner based on what the current
-		// hand values are
-		// currently, sometimes the game hangs in limbo when the user chooses "S"
-		// ideally, whenever the user chooses "S", the game bja object should
-		// be able to call the stay() method to move on to the next part of the game
 		Scanner sc = new Scanner(System.in);
 
 		while (playerHand.getHandValue() < 21) {
@@ -108,7 +101,7 @@ public class BlackJackApp {
 				}
 				if (playerHand.getHandValue() == 21) {
 					bja.showCards();
-					System.out.println("WINNER WINNER, CHICKEN DINNER");
+					System.out.println("WINNER, WINNER, CHICKEN DINNER");
 					System.out.println("You got BLACKJACK");
 					bja.EndQuestion();
 				}
@@ -127,6 +120,7 @@ public class BlackJackApp {
 			System.out.println("Your score is: " + playerHand.getHandValue());
 			System.out.println("Dealer score is: " + dealerHand.getHandValue());
 			System.out.println("You lose, better luck next time.");
+			System.out.println("\u1F62D");
 			bja.EndQuestion();
 		} else if (playerHand.getHandValue() > dealerHand.getHandValue() && dealerHand.getHandValue() >= 17
 				&& playerHand.getHandValue() < 21) {
@@ -188,7 +182,7 @@ public class BlackJackApp {
 	public void displayGameName() {
 
 		System.out.println("=================================");
-		System.out.println("=====LET'S PLAY BLACKJACK!!!=====");
+		System.out.println("\u2665" + "\u2660" + " LET'S PLAY BLACKJACK!!! " + " \u2663" + "\u2666");
 		System.out.println("=================================");
 
 		System.out.println();
@@ -226,11 +220,9 @@ public class BlackJackApp {
 		} else if (answer.equalsIgnoreCase("N")) {
 			System.out.println("Bye, Felicia");
 			System.exit(1);
-		}
-		else {
+		} else {
 			System.out.println("I did not understand your answer  :(");
 			bja.EndQuestion();
-	
 
 		}
 	}
