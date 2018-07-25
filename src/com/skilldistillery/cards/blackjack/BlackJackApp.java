@@ -50,9 +50,10 @@ public class BlackJackApp {
 		dealerHand.getHandValue();
 		bja.formattingLines();
 
-		System.out.println();
 		if (playerHand.getHandValue() > 21) {
-			System.out.println("What a BUST, you went over 21 ");
+			System.out.println();
+			System.out.println("You got over 21 on your first hand.  Aces are hard.");
+			bja.EndQuestion();
 		}
 
 		if (playerHand.getHandValue() == 21) {
@@ -101,7 +102,7 @@ public class BlackJackApp {
 
 				if (playerHand.getHandValue() > 21) {
 					bja.showCards();
-					System.out.println("WHAT A BUST!" + "Your losing score is: \t" + playerHand.getHandValue());
+					System.out.println("WHAT A BUST!" + "  Your losing score is: \t" + playerHand.getHandValue());
 					bja.EndQuestion();
 
 				}
@@ -207,7 +208,7 @@ public class BlackJackApp {
 			System.out.println("Ok, bye.");
 			System.exit(1);
 		} else {
-			System.out.println("(Y) or (N) ");
+			System.out.println("I did not understand your answer :( ");
 			bja.Begin();
 		}
 	}
@@ -226,7 +227,12 @@ public class BlackJackApp {
 			System.out.println("goodbye");
 			System.exit(1);
 		}
+		else {
+			System.out.println("I did not understand your answer  :(");
+			bja.EndQuestion();
+	
 
+		}
 	}
 
 	public void formattingLines() {
