@@ -49,13 +49,13 @@ public class BlackJackApp {
 		System.out.println("Dealer's current hand is a SECRET ");
 		dealerHand.getHandValue();
 		bja.formattingLines();
-
+		//checks if you player gets 2 Aces in first hand, they automatically lose
 		if (playerHand.getHandValue() > 21) {
 			System.out.println();
 			System.out.println("You got over 21 on your first hand.  Aces are hard.");
 			bja.EndQuestion();
 		}
-
+		//checks if player gets 21 on first hand, they win
 		if (playerHand.getHandValue() == 21) {
 			System.out.println("WINNER");
 			System.out.println("You got BLACKJACK");
@@ -63,16 +63,19 @@ public class BlackJackApp {
 			bja.EndQuestion();
 
 		}
+		//checks if dealer gets 21 on first hand
 		if (dealerHand.getHandValue() == 21) {
 			System.out.println("Dealer score: " + dealerHand.getHandValue());
 			System.out.println("Dealer got BLACKJACK");
 			bja.EndQuestion();
 		}
+		//checks if both dealer and player have blackjack, this is a tie game
 		if (dealerHand.getHandValue() == 21 && playerHand.getHandValue() == 21) {
 			System.out.println("This is a tie game, no winner, no chicken dinner");
 			bja.EndQuestion();
 		}
-
+		//checks if player has less than 21, player hand enter method to choose to hit or stay
+		//probably could have used player hand as the caller, might rework this later
 		if (playerHand.getHandValue() < 21) {
 			bja.Hit();
 		}
@@ -80,25 +83,33 @@ public class BlackJackApp {
 
 	public void Hit() {
 		Scanner sc = new Scanner(System.in);
-
+		
+		//this loop is designed to keep asking the player if they want to hit if their
+		//hand value is under 21, once the player is happy with their cards, they
+		//should enter the stay method
 		while (playerHand.getHandValue() < 21) {
 			System.out.println("What would you like to do: HIT (H) or STAY (S)\t");
 			String answer = scanner.next();
-
+			//player hand can enter the stay method after hitting or immediately after
+			//choosing to stay
 			if (answer.equalsIgnoreCase("S")) {
 				bja.stay();
 
 			}
+			//if player immediately hits, they will be dealt a new card
 			if (answer.equalsIgnoreCase("H")) {
 				System.out.println("New card is: \t" + playerHand.addCardsToHand(deck.getCard()));
 				System.out.println("Your current hand is: \t" + playerHand.getHandValue());
-
+				//this condition will evaluate based on the players hit to see if they
+				//have a score over 21, they will lose if condition is true
 				if (playerHand.getHandValue() > 21) {
 					bja.showCards();
 					System.out.println("WHAT A BUST!" + "  Your losing score is: \t" + playerHand.getHandValue());
 					bja.EndQuestion();
 
 				}
+				//this condition will evaluate if the player has Blackjack, if
+				//true they win
 				if (playerHand.getHandValue() == 21) {
 					bja.showCards();
 					System.out.println("WINNER, WINNER, CHICKEN DINNER");
@@ -109,12 +120,16 @@ public class BlackJackApp {
 		}
 	}
 
+	//if player chooses to stay while in the hit, they move to the stay method
 	public void stay() {
-
+		//this condition will evaluate whether the player's hand is 21,
+		//if true, they win
 		if (playerHand.getHandValue() == 21) {
 			bja.showCards();
 			System.out.println("You win");
 			bja.EndQuestion();
+			//this condition will evaluate whether the player's end hand is less
+			//than the dealer's end hand, the player loses if true
 		} else if (playerHand.getHandValue() < dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("Your score is: " + playerHand.getHandValue());
@@ -122,6 +137,9 @@ public class BlackJackApp {
 			System.out.println("You lose, better luck next time.");
 			System.out.println("\u1F62D");
 			bja.EndQuestion();
+			//this condition will evaluate whether the player hand value is greater than the dealer
+			//hand but less than 21.  This will also check if the dealer hand value
+			//is greater than or equal to 17 but less than 21, player will win
 		} else if (playerHand.getHandValue() > dealerHand.getHandValue() && dealerHand.getHandValue() >= 17
 				&& playerHand.getHandValue() < 21) {
 			bja.showCards();
@@ -129,13 +147,15 @@ public class BlackJackApp {
 			System.out.println("Dealer's score is: " + dealerHand.getHandValue());
 			System.out.println("You WIIIIIIIIIIIIIIIN!");
 			bja.EndQuestion();
-
+			//this condition will check if the player hand is equal to the dealer hand and also
+			//if the dealer hand is greater than 21, this will be a tie
 		} else if (playerHand.getHandValue() == dealerHand.getHandValue() && dealerHand.getHandValue() > 17) {
 			bja.showCards();
 			System.out.println("You have the same score as the dealer, no one wins");
 			bja.EndQuestion();
 		}
-
+			//this condition will check if the player hand is less than 21 and if the player hand is
+			//less than the deal hand
 		else if (playerHand.getHandValue() < 21 && playerHand.getHandValue() < dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("You lose");
