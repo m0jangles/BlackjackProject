@@ -19,6 +19,9 @@ Going this route made it easier for me to follow the flow of the game as it ente
 different "areas" rather than trying to follow one giant block of code as player
 jumped from hit to stay or hit multiple times before staying.  
 
+Yes, the methods could use some cleaning up but they were designed to help me keep
+track of the dealing order.  Refactoring is definitely in the future for this one.
+
 Logic flow was the hardest part because the game can go down various paths
 depending on both player and dealer's hand values.  Debugging wasn't hard, but
 rather time-consuming because I tried to keep from repeating code while still trying

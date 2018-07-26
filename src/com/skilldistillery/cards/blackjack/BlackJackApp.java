@@ -48,9 +48,11 @@ public class BlackJackApp {
 		
 		//dealer gets face down card
 		dealerHand.addCardsToHand(deck.getCard());
+		
+		//show player their current hand value
 		System.out.println("YOUR current hand is: " + playerHand.getHandValue());
 		bja.formattingLines();
-
+		//only show the dealer's first card
 		System.out.println("Dealer's first card is: " + dealerHand.getCards().get(0));
 		System.out.println();
 		System.out.println("Dealer's second card is A SECRET ");
