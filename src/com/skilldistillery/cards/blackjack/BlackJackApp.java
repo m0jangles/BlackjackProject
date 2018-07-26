@@ -15,13 +15,14 @@ public class BlackJackApp {
 	Hand dealerHand = new BlackjackHand();
 	Hand playerHand = new BlackjackHand();
 	Deck deck = new Deck();
-	static BlackJackApp bja = new BlackJackApp();
+	static BlackJackApp bja = new BlackJackApp(); 
 
 	Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
+		
 		bja.Begin();
+		
 
 	}
 
@@ -37,20 +38,23 @@ public class BlackJackApp {
 		//player gets a card
 		System.out.println("YOUR first card is: " + playerHand.addCardsToHand(deck.getCard()));
 		System.out.println();
+		
 		//dealer gets a card
-		//dealerHand.addCardsToHand(deck.getCard());
+		dealerHand.addCardsToHand(deck.getCard());
+		
 		//player gets a card
 		System.out.println("YOUR second card is: " + playerHand.addCardsToHand(deck.getCard()));
 		System.out.println();
+		
 		//dealer gets face down card
-		//dealerHand.addCardsToHand(deck.getCard());
+		dealerHand.addCardsToHand(deck.getCard());
 		System.out.println("YOUR current hand is: " + playerHand.getHandValue());
 		bja.formattingLines();
 
-		System.out.println("Dealer's first card is: " + dealerHand.addCardsToHand(deck.getCard()));
+		System.out.println("Dealer's first card is: " + dealerHand.getCards().get(0));
 		System.out.println();
 		System.out.println("Dealer's second card is A SECRET ");
-		dealerHand.addCardsToHand(deck.getCard());
+		//dealerHand.addCardsToHand(deck.getCard());
 		System.out.println();
 		System.out.println("Dealer's current hand is a SECRET ");
 		dealerHand.getHandValue();
