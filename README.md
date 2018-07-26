@@ -9,6 +9,18 @@ When the game first runs, the user will be asked if they want to play.  The game
 begins when the player types "Y".  From there, the player is prompted throughout
 to stay or hit depending on the value of the hand.
 
+If the player get 21 immediately or over 21, the game ends and user is asked if they
+want to play again.
+
+If dealer and user ever tie, no one wins.
+
+#### Topics Covered
+- Enums for suits and ranks are really convenient and reusable for other card games
+- Methods on Methods
+- loops, to keep presenting a player with options
+- cutting down on variables and making my methods work for me
+- Abstract classes
+
 #### Lessons Learned
 I started off with one giant set of conditions but decided to break them up into
 methods that were related to the choice the player made.  For example, if the player
