@@ -21,7 +21,7 @@ public class BlackJackApp {
 
 	public static void main(String[] args) {
 
-		bja.Begin();
+		bja.begin();
 
 	}
 
@@ -30,10 +30,10 @@ public class BlackJackApp {
 		bja.displayGameName();
 		deck.createDeck();
 		deck.shuffle(); /// CARDS SHUFFLED
-		bja.FirstHand();
+		bja.firstHand();
 	}
 
-	public void FirstHand() {
+	public void firstHand() {
 		// player gets a card
 		System.out.println("YOUR first card is: " + playerHand.addCardsToHand(deck.getCard()));
 		System.out.println();
@@ -64,7 +64,7 @@ public class BlackJackApp {
 		if (playerHand.getHandValue() > 21) {
 			System.out.println();
 			System.out.println("You got over 21 on your first hand.  Aces are hard.");
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 
 		// checks if player gets 21 on first hand, they win
@@ -72,29 +72,29 @@ public class BlackJackApp {
 			System.out.println("WINNER");
 			System.out.println("You got BLACKJACK");
 			System.out.println("WINNER");
-			bja.EndQuestion();
+			bja.endQuestion();
 
 		}
 		// checks if dealer gets 21 on first hand
 		if (dealerHand.getHandValue() == 21) {
 			System.out.println("Dealer score: " + dealerHand.getHandValue());
 			System.out.println("Dealer got BLACKJACK");
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 		// checks if both dealer and player have blackjack, this is a tie game
 		if (dealerHand.getHandValue() == 21 && playerHand.getHandValue() == 21) {
 			System.out.println("This is a tie game, no winner, no chicken dinner");
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 		// checks if player has less than 21, player hand enter method to choose to hit
 		// or stay
 		// probably could have used player hand as the caller, might rework this later
 		if (playerHand.getHandValue() < 21) {
-			bja.Hit();
+			bja.hit();
 		}
 	}
 
-	public void Hit() {
+	public void hit() {
 		Scanner sc = new Scanner(System.in);
 
 		// this loop is designed to keep asking the player if they want to hit if their
@@ -118,7 +118,7 @@ public class BlackJackApp {
 				if (playerHand.getHandValue() > 21) {
 					bja.showCards();
 					System.out.println("WHAT A BUST!" + "  Your losing score is: \t" + playerHand.getHandValue());
-					bja.EndQuestion();
+					bja.endQuestion();
 
 				}
 				// this condition will evaluate if the player has Blackjack, if
@@ -127,7 +127,7 @@ public class BlackJackApp {
 					bja.showCards();
 					System.out.println("WINNER, WINNER, CHICKEN DINNER");
 					System.out.println("You got BLACKJACK");
-					bja.EndQuestion();
+					bja.endQuestion();
 				}
 			}
 		}
@@ -140,7 +140,7 @@ public class BlackJackApp {
 		if (playerHand.getHandValue() == 21) {
 			bja.showCards();
 			System.out.println("You win");
-			bja.EndQuestion();
+			bja.endQuestion();
 			// this condition will evaluate whether the player's end hand is less
 			// than the dealer's end hand, the player loses if true
 		} else if (playerHand.getHandValue() < dealerHand.getHandValue()) {
@@ -148,7 +148,7 @@ public class BlackJackApp {
 			System.out.println("Your score is: " + playerHand.getHandValue());
 			System.out.println("Dealer score is: " + dealerHand.getHandValue());
 			System.out.println("You lose, better luck next time.");
-			bja.EndQuestion();
+			bja.endQuestion();
 			// this condition will evaluate whether the player hand value is greater than
 			// the dealer
 			// hand but less than 21. This will also check if the dealer hand value
@@ -159,14 +159,14 @@ public class BlackJackApp {
 			System.out.println("Your score is: " + playerHand.getHandValue());
 			System.out.println("Dealer's score is: " + dealerHand.getHandValue());
 			System.out.println("You WIIIIIIIIIIIIIIIN!");
-			bja.EndQuestion();
+			bja.endQuestion();
 			// this condition will check if the player hand is equal to the dealer hand and
 			// also
 			// if the dealer hand is greater than 21, this will be a tie
 		} else if (playerHand.getHandValue() == dealerHand.getHandValue() && dealerHand.getHandValue() > 17) {
 			bja.showCards();
 			System.out.println("You have the same score as the dealer, no one wins");
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 		// this condition will check if the player hand is both less than 21 and less
 		// than
@@ -174,18 +174,18 @@ public class BlackJackApp {
 		else if (playerHand.getHandValue() < 21 && playerHand.getHandValue() < dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("You lose");
-			bja.EndQuestion();
+			bja.endQuestion();
 			// checks if player hand is less than 21 and dealer hand less than 17, game
 			// contineus
 			// dealer will need to hit in the dealer method
 		} else if (playerHand.getHandValue() < 21 && dealerHand.getHandValue() < 17) {
 
-			bja.Dealer();
+			bja.dealer();
 		}
 
 	}
 
-	public void Dealer() {
+	public void dealer() {
 		// this loop is designed to make the dealer continue to hit as long
 		// as their hand value is less than 17
 		while (dealerHand.getHandValue() < 17) {
@@ -198,7 +198,7 @@ public class BlackJackApp {
 		if (dealerHand.getHandValue() > 21) {
 			bja.showCards();
 			System.out.println("Dealer BUSTS with: \t" + dealerHand.getHandValue());
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 		// this condition will check one last time if the player hand value is greater
 		// than or
@@ -208,7 +208,7 @@ public class BlackJackApp {
 			bja.showCards();
 			System.out.println("You win with score: " + playerHand.getHandValue());
 			System.out.println("Dealer loses with score: " + dealerHand.getHandValue());
-			bja.EndQuestion();
+			bja.endQuestion();
 
 			// this condition will check final hands to see if player hand value is less
 			// than
@@ -216,13 +216,13 @@ public class BlackJackApp {
 		} else if (playerHand.getHandValue() < dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("You lose with score: " + playerHand.getHandValue());
-			bja.EndQuestion();
+			bja.endQuestion();
 			// this will condition will check if final tie exits, if true, there is no
 			// winner
 		} else if (playerHand.getHandValue() == dealerHand.getHandValue()) {
 			bja.showCards();
 			System.out.println("Player and dealer have the same score, no winner");
-			bja.EndQuestion();
+			bja.endQuestion();
 		}
 
 	}
@@ -243,7 +243,7 @@ public class BlackJackApp {
 
 	// This method is the initial question to the user for whether
 	// they want to play a game of Blackjack
-	public void Begin() {
+	public void begin() {
 
 		System.out.println("Would you like to play Blackjack (Y) or (N)?\n");
 		Scanner sc = new Scanner(System.in);
@@ -256,16 +256,16 @@ public class BlackJackApp {
 			System.exit(1);
 		} else {
 			System.out.println("I did not understand your answer :( ");
-			bja.Begin();
+			bja.begin();
 		}
 	}
 
 	// This is the end question that appears after every game to check
 	// if the user wants to play another game.
-	// This endQuestion method is different from the Begin method because
-	// This, one clears both hands and the deck for a fresh game of BlackJack
+	// This endQuestion method is different from the begin method because
+	// this one clears both hands and the deck for a fresh game of BlackJack
 	// The game calls the run method which creates a new deck and shuffles it
-	public void EndQuestion() {
+	public void endQuestion() {
 
 		System.out.println("Play again? YES (Y) or NO (N)");
 		Scanner sc = new Scanner(System.in);
@@ -280,7 +280,7 @@ public class BlackJackApp {
 			System.exit(1);
 		} else {
 			System.out.println("I did not understand your answer  :(");
-			bja.EndQuestion();
+			bja.endQuestion();
 
 		}
 	}
